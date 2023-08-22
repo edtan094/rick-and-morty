@@ -6,13 +6,11 @@ async function fetchPlanets() {
   "use server";
   const data = await client.query({
     query: gql`
-      query allPlanets {
-        allPlanets {
-          planets {
-            created
-            diameter
-            gravity
+      query ExampleQuery {
+        characters {
+          results {
             name
+            image
           }
         }
       }
@@ -22,12 +20,15 @@ async function fetchPlanets() {
 }
 
 export default async function Page() {
-  const planets = await fetchPlanets();
+  const { data } = await fetchPlanets();
   return (
     <>
       <div>Planets data</div>
-      {planets.data.allPlanets.planets.map((planet) => (
-        <div>{planet.name}</div>
+      {data.characters.results.map((character) => (
+        <div>
+          <div>{character.name}</div>
+          <img src={character.image} />
+        </div>
       ))}
     </>
   );
