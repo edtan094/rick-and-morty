@@ -5,8 +5,8 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Star Wars",
-  description: "Planets",
+  title: "Rick and Morty",
+  description: "Characters",
 };
 
 export default function RootLayout({
